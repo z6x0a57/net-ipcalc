@@ -57,9 +57,6 @@ return true(1) if $_[0] is an ip address otherwise return false(0).
 =cut
 
 sub is_ip { 
-    my @split = split /\./, $_[0];
-    use Data::Dumper;
-    print Dumper(\@split);
     my ($one, $two, $three, $four) = split /\./, $_[0], 4;
     
     if ((!defined($one)) ||
