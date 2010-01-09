@@ -1,5 +1,5 @@
 use Net::IPCalc;
-use Test::More tests => 21;
+use Test::More tests => 22;
 
 ok(is_ip('1.1.1.1'));
 ok(is_ip('127.0.0.1'));
@@ -18,6 +18,7 @@ ok(is_ip('1.1.1.1.1') == 0);
 ok(is_ip('127.0.0.1.') == 0);
 ok(is_ip('1.0.0.0') == 0);
 ok(is_ip('10.0.0.0') == 0);
+ok(is_ip('...') == 0);
 ok(is_ip('0.0.0.0') == 0);
 ok(is_ip('ip') == 0);
 ok(is_ip('0') == 0);

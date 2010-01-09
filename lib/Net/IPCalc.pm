@@ -57,6 +57,9 @@ return true(1) if $_[0] is an ip address otherwise return false(0).
 =cut
 
 sub is_ip { 
+    my @split = split /\./, $_[0];
+    use Data::Dumper;
+    print Dumper(\@split);
     my ($one, $two, $three, $four) = split /\./, $_[0], 4;
     
     if ((!defined($one)) ||
@@ -68,17 +71,16 @@ sub is_ip {
     }
 
 
-    if (($one   =~ /\D/) ||
-        ($two   =~ /\D/) ||
-        ($three =~ /\D/) ||
-        ($four  =~ /\D/))  {
-        return 0;
-    }
-    
-    if (    ($one   < 256) && ($one     >   0) &&
-            ($two   < 256) && ($two     >=  0) &&
-            ($three < 256) && ($three   >=  0) &&
-            ($four  < 256) && ($four    >   0)) {
+    if (($one   =~ /^\d+$/) &&
+        ($two   =~ /^\d+$/) &&
+        ($three =~ /^\d+$/) &&
+        ($four  =~ /^\d+$/) &&
+
+        ($one   < 256) && ($one     >   0) &&
+        ($two   < 256) && ($two     >=  0) &&
+        ($three < 256) && ($three   >=  0) &&
+        ($four  < 256) && ($four    >   0)
+       ) {
         return 1;
     }
 
