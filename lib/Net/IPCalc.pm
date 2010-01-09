@@ -58,13 +58,23 @@ return true(1) if $_[0] is an ip address otherwise return false(0).
 
 sub is_ip { 
     my ($one, $two, $three, $four) = split /\./, $_[0], 4;
+    
+    if ((!defined($one)) ||
+        (!defined($two)) ||
+        (!defined($three)) ||
+        (!defined($four))
+       ) {
+       return 0;
+    }
+
+
     if (($one   =~ /\D/) ||
         ($two   =~ /\D/) ||
         ($three =~ /\D/) ||
         ($four  =~ /\D/))  {
         return 0;
     }
-
+    
     if (    ($one   < 256) && ($one     >   0) &&
             ($two   < 256) && ($two     >=  0) &&
             ($three < 256) && ($three   >=  0) &&
