@@ -7,9 +7,6 @@ WriteMakefile(
     AUTHOR              => q{z6x0a57 <z6x0a57@gmail.com>},
     VERSION_FROM        => 'lib/Net/IPCalc.pm',
     ABSTRACT_FROM       => 'lib/Net/IPCalc.pm',
-    ($ExtUtils::MakeMaker::VERSION >= 6.3002
-      ? ('LICENSE'=> 'perl')
-      : ()),
     PL_FILES            => {},
     PREREQ_PM => {
         'Socket'     => 0,
